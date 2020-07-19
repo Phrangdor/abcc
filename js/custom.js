@@ -138,16 +138,18 @@ jQuery(document).ready(function () {
 
 });
 
-function initMap() {
-    // The location of Uluru
 
-    var uluru = { lat: 25.591386, lng: 91.880590 };
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 18, center: uluru });
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({ position: uluru, map: map });
-}
-$(window).on('beforeunload', function(){
+$(window).on('beforeunload', function () {
     $(window).scrollTop(0);
-  })
+})
+
+var mymap = L.map('mapid').setView([25.591386, 91.880590], 12);
+var marker = L.marker([25.591386, 91.880590]);
+marker.addTo(mymap);
+this.marker.bindPopup("Sacred Heart Boys' Higher Secondary School");
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+}).addTo(mymap);
+
+
